@@ -1,13 +1,13 @@
-# wemark - 微信小程序Markdown渲染库
+# alimark -  支付宝小程序Markdown渲染库
 
-[![Travis](https://img.shields.io/travis/TooBug/wemark/master.svg)](https://travis-ci.org/TooBug/wemark)
+[![Travis](https://img.shields.io/travis/TooBug/alimark/master.svg)](https://travis-ci.org/charsunny/alimark)
 ![MIT](https://img.shields.io/badge/LICENSE-MIT-green.svg)
 
-![wemark](./screenshot.png)
+![alimark](./screenshot.png)
 
 ## 背景和功能
 
-用于在小程序中渲染Markdown文本。
+用于在支付宝小程序中渲染Markdown文本。
 
 众所周知，Markdown的渲染一般需要解析成HTML来渲染。然而小程序并没有提供HTML渲染的功能，甚至连利用JS动态创建UI元素都不可能。因此所有的Markdown渲染库全部无法在小程序下正常工作。
 
@@ -17,25 +17,25 @@
 
 ### 1. 准备工作：
 
-1. 下载并拷贝`wemark`目录到小程序根目录
-2. WXSS中引用样式：`@import '../wemark/wemark.wxss'`
-3. WXML中引用结构：`<import src="../wemark/wemark.wxml"/>`
-4. JS中引用`wemark`：`var wemark = require('wemark')`
+1. 下载并拷贝`alimark`目录到小程序根目录
+2. ACSS中引用样式：`@import '../alimark/alimark.acss';`
+3. AXML中引用结构：`<import src="../alimark/alimark.axml"/>`
+4. JS中引用`alimark`：`const alimark = require('../alimark/alimark.js')`
 
 ### 2. JS部分
 
-首先需要确定一个用于`wemark`渲染使用的数据名称（默认情况下为`wemark`），然后在页面的`data`中指定：
+首先需要确定一个用于`alimark`渲染使用的数据名称（默认情况下为`alimark`），然后在页面的`data`中指定：
 
 ```javascript
 page({
 	data:{
 		// 确定一个数据名称
-		wemark:{}
+		alimark:{}
 	}
 });
 ```
 
-接下来在`Page`的生命周期函数（如`onReady`）中，调用`wemark.parse(md, this, options)`即可。
+接下来在`Page`的生命周期函数（如`onReady`）中，调用`alimark.parse(md, this, options)`即可。
 
 具体的参数说明：
 
@@ -43,34 +43,34 @@ page({
 - `this`，必填，`Page`实例
 - `options`，其它的参数
 	- ~~`imageWidth`，图片的宽度，如包含图片，则为必填，以`px`为单位~~ 新版小程序图片可以自适应宽高
-	- `name`，对应上面指定的数据名称，默认为`wemark`
+	- `name`，对应上面指定的数据名称，默认为`alimark`
 
-### 3. WXML部分
+### 3. AXML部分
 
 ```html
 // data中的参数和上方确定的数据名称保持一致
-<template is="wemark" data="{{...wemark}}"></template>
+<template is="alimark" data="{{...alimark}}"></template>
 ```
 
 ### 实例
 
 ```javascript
-// 引入wemark
-var wemark = require('../wemark/wemark');
+// 引入alimark
+var alimark = require('../alimark/alimark');
 // 需要渲染的Markdown文本
-var md = '# hello, world\n\nI love you, wemark!';
+var md = '# hello, world\n\nI love you, alimark!';
 
 
 Page({
 	data: {
 		// 确定一个数据名称
-		wemark:{}
+		alimark:{}
 	},
 	onReady: function(){
-		wemark.parse(md, this, {
+		alimark.parse(md, this, {
 			// 新版小程序可自适应宽高
 			// imageWidth: wx.getSystemInfoSync().windowWidth - 40,
-			name: 'wemark'
+			name: 'alimark'
 		})
 	}
 });
@@ -104,13 +104,7 @@ npm test
 
 MIT
 
-## 用户列表
-
-- [TooNote](https://xiaotu.io)
-- [王者荣耀早知道](https://www.wxappr.com/app/1449)
-- [群里有事](http://www.ifanr.com/minapp/843889) （目测 尝试联系作者确认，没有回应）
-
-如果你也使用了 wemark，欢迎提 PR 将自己的小程序加入列表
+如果你也使用了 alimark，欢迎提 PR 将自己的小程序加入列表
 
 ## 版本记录
 

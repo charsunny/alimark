@@ -6,7 +6,7 @@ var parser = new Remarkable({
 function parse(md, page, options){
 
 	if(!options) options = {};
-	if(!options.name) options.name = 'wemark';
+	if(!options.name) options.name = 'alimark';
 
 	var tokens = parser.parse(md, {});
 

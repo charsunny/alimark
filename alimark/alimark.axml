@@ -1,0 +1,18 @@
+<template name="alimark">
+
+<view class="alimark_wrapper">
+<block a:for="{{renderList}}" a:key="blockIndex" a:for-index="blockIndex" a:for-item="renderBlock">
+	<view class="alimark_block_{{renderBlock.type}}">
+		<block a:if="{{renderBlock.isArray}}" a:for="{{renderBlock.content}}" a:key="inlineIndex" a:for-index="inlineIndex" a:for-item="renderInline">
+			<text class="alimark_inline_{{renderInline.type}}" a:if="{{renderInline.type === 'text' || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'deleted' || renderInline.type === 'em' || renderInline.type === 'table_th' || renderInline.type === 'table_td'}}">{{renderInline.content}}</text>
+			<image mode="widthFix" class="alimark_inline_image" src="{{renderInline.src}}" a:if="{{renderInline.type === 'image'}}"></image>
+		</block>
+		<block a:if="{{!renderBlock.isArray}}">
+			<view a:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
+			<video a:if="{{renderBlock.type == 'video'}}" class="alimark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
+		</block>
+	</view>
+</block>
+</view>
+
+</template>
