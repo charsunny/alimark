@@ -66,7 +66,7 @@ Page({
 		// 确定一个数据名称
 		alimark:{}
 	},
-	onReady: function(){
+	onLoad() {
 		alimark.parse(md, this, {
 			// 新版小程序可自适应宽高
 			// imageWidth: wx.getSystemInfoSync().windowWidth - 40,
